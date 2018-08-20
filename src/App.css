@@ -146,7 +146,7 @@ html, body {
 .message-list {
   box-sizing: border-box;
   padding-left: 6px;
-  margin-left: 50px; /*I put this here*/
+  margin-left: 10px; /* still not sure*/
   width: 100%;
   height: 100%;
   overflow: scroll;
@@ -188,4 +188,5 @@ html, body {
 .help-text {
   position: absolute;
   top: 10px;
+  margin: 10px; /*not sure*/
 }

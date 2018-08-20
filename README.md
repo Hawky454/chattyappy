@@ -12,6 +12,7 @@
  * User should be able to interact live with with other users in the same chatroom
  * Users should be able to communicate via video in the chatroom
 
+ * I'm using React JS for my front end framework and I'm employing CSS Grid and CSS Variables so I consciously decided not to use a CSS framework for this project. I chose these three technologies because I really want improve my skills with them.
 
 # Wireframe
 ![WireframeQ2](/images/ChatApp.png)
