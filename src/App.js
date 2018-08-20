@@ -16,6 +16,7 @@ class App extends Component {
     this.state = {
       messages: []
     }
+    this.sendMessage = this.sendMessage.bind(this)
   }
 
   componentDidMount() {
@@ -30,7 +31,8 @@ class App extends Component {
     //this is a fetch call from the chatkit api
     chatManager.connect() 
     .then(currentUser => {
-        currentUser.subscribeToRoom({
+      this.currentUser = currentUser
+        this.currentUser.subscribeToRoom({
             roomId: 14328009,
             hooks: {
                 onNewMessage: message => {
@@ -43,13 +45,20 @@ class App extends Component {
     })
 }
 
+sendMessage(text) {
+  this.currentUser.sendMessage({
+    text: text,
+    roomId: 14328009
+  })
+}
+
   
   render() { 
     return (
       <div className="app">
         <RoomList />
         <MessageList messages={this.state.messages}/>
-        <SendMessageForm />
+        <SendMessageForm sendPost={this.sendMessage}/>
         <NewRoomForm />
       </div>
     );
