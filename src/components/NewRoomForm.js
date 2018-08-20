@@ -9,7 +9,7 @@ class NewRoomForm extends React.Component {
                         type="text" 
                         placeholder="NewRoomForm" 
                         required />
-                    <button id="create-room-btn" type="submit"> + 💬</button>
+                    <button id="create-room-btn" type="submit">+<span role="img" aria-label="emogi">💬</span></button>
             </form>
         </div>
         )
