@@ -1,9 +1,9 @@
 # ChatApp
 #Chatty Appy
 
-#...This readme is still under construction
 
-# My intent is to make a simple chat room app using React JS.  The purpose is to have a nice little interactive chat room while I hone my skills in React.
+
+ * My intent is to make a simple chat room app using React JS.  The purpose is to have a nice little interactive chat room while I hone my skills in React.
 
 # I will be utilizing the Chatkit API
 
