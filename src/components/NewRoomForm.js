@@ -12,10 +12,13 @@ class NewRoomForm extends React.Component {
 
     validateForm(event) {
         event.preventDefault();
-        console.log(event.target.value);
+        this.setState({
+            newRoom: event.target.value
+        });
+        console.log(event.target);
         if(event.target.value === '') {
-            return alert('Please enter a name for a new room')
-        }
+            return alert('Please enter a name for a new room');
+        } 
     }
 
     render () {
@@ -27,7 +30,7 @@ class NewRoomForm extends React.Component {
                         placeholder="NewRoomForm" />
                     <button 
                     onClick={this.validateForm}
-                    value=""
+                    value={this.state.newRoom}
                     id="create-room-btn" 
                     type="submit">+<span 
                     role="img" 

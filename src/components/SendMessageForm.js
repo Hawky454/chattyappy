@@ -18,12 +18,19 @@ class SendMessageForm extends React.Component {
         });
         // console.log('event.target.value', event.target.value) this is the same now as calling this.state.message below because we bound this
     }
-
+    
+    
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state.message);
         this.props.sendMessage(this.state.message)
-       
+        //clean up the input field by setting re-setting state to an empty string
+        this.setState({
+            message: ''
+        });
+        if(this.state.message === '') {
+            alert('Omg, enter in some freakin\' text before you hit ENTER!');
+        }
     }
 
     render() {

@@ -1,5 +1,5 @@
 import React from 'react'
-//changed from a class component to a functional component!
+//this component is being used in the MessageList.js
 function Message(props) {  
         return (
             <div className="message">
