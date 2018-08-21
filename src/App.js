@@ -49,7 +49,7 @@ sendMessage(text) {
   this.currentUser.sendMessage({
     text: text,
     roomId: 14328009
-  })
+  });
 }
 
   
@@ -58,7 +58,7 @@ sendMessage(text) {
       <div className="app">
         <RoomList />
         <MessageList messages={this.state.messages}/>
-        <SendMessageForm sendPost={this.sendMessage}/>
+        <SendMessageForm sendMessage={this.sendMessage}/>
         <NewRoomForm />
       </div>
     );

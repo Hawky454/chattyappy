@@ -22,7 +22,7 @@ class SendMessageForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state.message);
-        this.props.sendPost(this.state.message)
+        this.props.sendMessage(this.state.message)
        
     }
 

@@ -100,12 +100,15 @@ html, body {
 .new-room-form input {
   width: 135px;
   background: var(--secondary-color);
+  font-size: 20px; 
 }
 
 .new-room-form button {
   background: var(--secondary-color);
   color: var(--main-text-color);
   border: 0;
+  font-weight: 900;
+  font-size: 24px;
 } 
 
 .new-room-form input::placeholder {
@@ -171,6 +174,7 @@ html, body {
   width: 100%;
   padding: 15px 10px;
   margin: 0;
+  font-size: 24px;
   border-style: none;
   background: var(--send-message-form);
   font-weight: 200;
@@ -189,4 +193,5 @@ html, body {
   position: absolute;
   top: 10px;
   margin: 10px; /*not sure*/
+  font-size: 30px;
 }
