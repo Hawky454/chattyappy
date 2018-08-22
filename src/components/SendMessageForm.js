@@ -7,16 +7,16 @@ class SendMessageForm extends React.Component {
         this.state = {
             message: ''
         }
-        //could not use this keyword in the handleChange function without binding first
+        //! Could not use this keyword in the handleChange function without binding first
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    // when creating a function in a class component you don't have to declare it by calling function first
+    //! when creating a function in a class component you don't have to declare it by calling function first
     handleChange(event) {
         this.setState({
             message: event.target.value
         });
-        // console.log('event.target.value', event.target.value) this is the same now as calling this.state.message below because we bound this
+        //! console.log('event.target.value', event.target.value) this is the same now as calling this.state.message below because we bound this
     }
     
     
@@ -24,7 +24,7 @@ class SendMessageForm extends React.Component {
         event.preventDefault();
         console.log(this.state.message);
         this.props.sendMessage(this.state.message)
-        //clean up the input field by setting re-setting state to an empty string
+        //! clean up the input field by setting re-setting state to an empty string
         this.setState({
             message: ''
         });

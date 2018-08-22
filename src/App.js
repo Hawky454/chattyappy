@@ -18,29 +18,40 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
+      roomId: null,
       messages: [],
       joinableRooms: [],
       joinedRooms: []
     }
     this.sendMessage = this.sendMessage.bind(this)
+    this.subscribeToRoom = this.subscribeToRoom.bind(this)
+    this.getRooms = this.getRooms.bind(this)
   }
-
+  
   componentDidMount() {
     const chatManager = new Chatkit.ChatManager({
-        instanceLocator,
-        userId: admin,
-        tokenProvider: new Chatkit.TokenProvider({
-            url: tokenUrl
-        })
+      instanceLocator,
+      userId: admin,
+      tokenProvider: new Chatkit.TokenProvider({
+        url: tokenUrl
+      })
     })
 
-    //this is a fetch call from the chatkit api
-    chatManager.connect() 
-    .then(currentUser => {    //returns a promise
-      this.currentUser = currentUser 
+    //this is a fetch call to the chatkit api
+    chatManager.connect()
+      .then(currentUser => { //returns a promise
+        this.currentUser = currentUser
+        this.getRooms();
 
 
-      this.currentUser.getJoinableRooms() //returns a promise
+      })
+
+      .catch(err => console.log('error on connecting: ', err))
+
+  }
+  
+  getRooms() {
+    this.currentUser.getJoinableRooms() //returns a promise
       .then(joinableRooms => { //add the rooms to the state
         this.setState({
           joinableRooms,
@@ -48,26 +59,37 @@ class App extends Component {
         })
       })
       .catch(err => console.log('error on joinableRooms: ', err))
+  }
 
-        this.currentUser.subscribeToRoom({
-            roomId: 14328009,
-            hooks: {
-                //message is the data we're receiveing... I map through it in MessageList.js
-                onNewMessage: message => {
-                    this.setState({ //... (spread opererator)inplace of setting up an array ES6, we do this to maintain the state of the original array instead of using the push method: message.push()
-                      messages: [...this.state.messages, message]
-                    })
-                }
-            }
-        })
+  subscribeToRoom(roomId) {
+    // need to clean up the state...
+    this.setState({messages: [] })
+    this.currentUser.subscribeToRoom({
+      roomId: roomId,
+      hooks: {
+          onNewMessage: message => {
+              this.setState({ 
+                messages: [...this.state.messages, message]
+              })
+          }
+      }
+  })
+  .then(room => {
+      this.setState({
+        roomId: room.id
+      })
+      this.getRooms()
     })
-    .catch(err => console.log('error on connecting: ', err))
-}
-  //this function is sending data to ChatKit : put this down below as a prop in <SendMessageForm />
+    .catch(err => console.log('error on subscribing to room: ', err))
+  }
+
+
+
+  //!this function is sending data to ChatKit : put this down below as a prop in <SendMessageForm />
 sendMessage(text) {
   this.currentUser.sendMessage({
     text: text,
-    roomId: 14328009
+    roomId: this.state.roomId
   });
 }
 
@@ -75,9 +97,14 @@ sendMessage(text) {
   render() { 
     return (
       <div className="app"> 
-        <RoomList rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}/>
-        <MessageList messages={this.state.messages}/>
-        <SendMessageForm sendMessage={this.sendMessage} /> {/*added above function as prop so it can be used in SendMessageForm.js*/}
+        <RoomList 
+          roomId={this.state.roomId}
+          subscribeToRoom={this.subscribeToRoom}
+          rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}/>
+        <MessageList 
+          messages={this.state.messages}/>
+        <SendMessageForm 
+          sendMessage={this.sendMessage} /> {/*added above function as prop so it can be used in SendMessageForm.js*/}
         <NewRoomForm />
       </div>
     );

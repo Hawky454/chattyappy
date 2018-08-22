@@ -7,18 +7,8 @@ class NewRoomForm extends React.Component {
         this.state = {
             newRoom: ''
         }
-        this.validateForm = this.validateForm.bind(this);
-    }
 
-    validateForm(event) {
-        event.preventDefault();
-        this.setState({
-            newRoom: event.target.value
-        });
-        console.log(event.target);
-        if(event.target.value === '') {
-            return alert('Please enter a name for a new room');
-        } 
+
     }
 
     render () {
@@ -29,7 +19,7 @@ class NewRoomForm extends React.Component {
                         type="text" 
                         placeholder="NewRoomForm" />
                     <button 
-                    onClick={this.validateForm}
+                    onClick={() => {(this.state.newRoom === '') ? alert('hey there!') : this.state.newRoom}}  
                     value={this.state.newRoom}
                     id="create-room-btn" 
                     type="submit">+<span 
