@@ -23,14 +23,14 @@ html, body {
   display: grid;
   height: 100%;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 100px;
   grid-template-areas: 
       "r m m m m m"
       "r m m m m m"
       "r m m m m m"
       "r m m m m m"
       "r m m m m m"
-      "n f f f f f";
+      "n s s s s s";
 }
 
 .new-room-form {
@@ -46,7 +46,7 @@ html, body {
 }
 
 .send-message-form {
-  grid-area: f;
+  grid-area: s;
 }
 
 /* REST OF CSS */
@@ -56,6 +56,7 @@ html, body {
   background-color: var(--main-color);
   overflow: scroll;
   height: 100%;
+  font-size: 24px;
 }
 
 .rooms-list > ul {
@@ -65,7 +66,7 @@ html, body {
 }
 
 .rooms-list li {
-  margin: 20px;
+  margin: 10px;
 }
 
 .rooms-list > h3 {
@@ -133,7 +134,7 @@ html, body {
 }
 
 .message .message-username {
-  font-size: 11px;
+  font-size: 16px;
   color: var(--main-text-color);
   opacity: 0.9;
   margin-bottom: 6px;
@@ -154,6 +155,7 @@ html, body {
   height: 100%;
   overflow: scroll;
   background: var(--secondary-color);
+  font-size: 36px;
 }
 
 .message-list .join-room {
