@@ -42,6 +42,7 @@ class App extends Component {
     chatManager.connect()
       .then(currentUser => { //returns a promise
         this.currentUser = currentUser
+        console.log(this.currentUser.rooms[3].userIds)
         this.getRooms();
 
 
@@ -74,6 +75,9 @@ class App extends Component {
               this.setState({ 
                 messages: [...this.state.messages, message]
               })
+          },
+          onUserStartedTyping: user => {
+            //todo
           }
       }
   })
