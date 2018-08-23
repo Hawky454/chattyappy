@@ -11,12 +11,13 @@ class SendMessageForm extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    //! when creating a function in a class component you don't have to declare it by calling function first
+
+
     handleChange(event) {
         this.setState({
             message: event.target.value
         });
-        //! console.log('event.target.value', event.target.value) this is the same now as calling this.state.message below because we bound this
+       
     }
     
     
@@ -39,6 +40,7 @@ class SendMessageForm extends React.Component {
                 onSubmit={this.handleSubmit}
                 className="send-message-form">
                 <input 
+                  disabled={this.props.disabled}
                   onChange={this.handleChange}
                   value={this.state.message}
                   placeholder="Type your message and hit ENTER" 

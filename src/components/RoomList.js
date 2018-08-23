@@ -14,7 +14,7 @@ class RoomList extends React.Component {
                       <li className={"room " + active} key={rooms.id}>
                           {/* using an anonymous function to be invoked when onClick is triggered */}
                            <a onClick={()=> {this.props.subscribeToRoom(rooms.id)}}
-                           href="#"># {rooms.name}</a>
+                           href="#">* {rooms.name}</a>
                           {/*I really want to post rooms.name at the top of MessageList so I know what chatroom I'm in*/}
                       </li>
                     );

@@ -26,6 +26,7 @@ class App extends Component {
     this.sendMessage = this.sendMessage.bind(this)
     this.subscribeToRoom = this.subscribeToRoom.bind(this)
     this.getRooms = this.getRooms.bind(this)
+    this.createRoom = this.createRoom.bind(this)
   }
   
   componentDidMount() {
@@ -63,7 +64,9 @@ class App extends Component {
 
   subscribeToRoom(roomId) {
     // need to clean up the state...
-    this.setState({messages: [] })
+    this.setState({
+      messages: [] 
+    })
     this.currentUser.subscribeToRoom({
       roomId: roomId,
       hooks: {
@@ -93,6 +96,17 @@ sendMessage(text) {
   });
 }
 
+
+
+createRoom(newRoomName) {
+  console.log('newRoomName: ', newRoomName)
+  this.currentUser.createRoom({
+    name: newRoomName
+  })
+  .then(room => this.subscribeToRoom(room.id))
+  .catch(err => console.log('error with createRoom: ', err))
+}
+  
   
   render() { 
     return (
@@ -102,10 +116,12 @@ sendMessage(text) {
           subscribeToRoom={this.subscribeToRoom}
           rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}/>
         <MessageList 
+          roomId={this.state.roomId}
           messages={this.state.messages}/>
         <SendMessageForm 
+          disabled={!this.state.roomId}
           sendMessage={this.sendMessage} /> {/*added above function as prop so it can be used in SendMessageForm.js*/}
-        <NewRoomForm />
+        <NewRoomForm createRoom={this.createRoom}/>
       </div>
     );
   }

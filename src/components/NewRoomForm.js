@@ -5,26 +5,50 @@ class NewRoomForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            newRoom: ''
+            newRoomName: ''
         }
-
-
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        
     }
+
+    handleChange(event) {
+        this.setState({
+            newRoomName: event.target.value
+        })
+    }
+
+    handleSubmit(event) {
+        event.preventDefault()
+        this.props.createRoom(this.state.newRoomName)
+
+        this.setState({
+            newRoomName: ''
+          })
+          if(this.state.newRoomName === '') {
+              alert('Please enter the name of a room before submitting')
+          }
+    }
+
+
 
     render () {
         return (
             <div className="new-room-form">
-                <form>
+                <form 
+                  onSubmit={this.handleSubmit}>
                     <input
+                        value={this.state.newRoomName}
+                        onChange={this.handleChange}
                         type="text" 
-                        placeholder="NewRoomForm" />
+                        placeholder="Create a room:" 
+                        />
                     <button 
-                    onClick={() => {(this.state.newRoom === '') ? alert('hey there!') : this.state.newRoom}}  
-                    value={this.state.newRoom}
-                    id="create-room-btn" 
-                    type="submit">+<span 
-                    role="img" 
-                    aria-label="emoji">💬</span></button>
+                      id="create-room-btn" 
+                      type="submit">+<span 
+                      role="img" 
+                      aria-label="emoji">💬</span>
+                     </button>
                     
             </form>
         </div>

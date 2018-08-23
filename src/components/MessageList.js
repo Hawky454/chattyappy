@@ -23,6 +23,15 @@ class MessageList extends React.Component {
     }
     
     render() {
+        if(!this.props.roomId) {
+            return (
+                <div className="message-list">
+                    <div className="join-room">
+                    &larr; Join a room!
+                    </div>
+                </div>
+            )
+        }
         return (
             <div className="message-list">
                 {/* we use props here because we added the props to element in App.js while rendering.  this.state was converted to this.props at that point. */}
