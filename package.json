@@ -1,0 +1,30 @@
+{
+  "name": "chattyappy",
+  "version": "0.1.0",
+  "main": "backend/bin/www",
+  "private": true,
+  "dependencies": {
+    "@pusher/chatkit": "^0.7.17",
+    "ajv": "^6.5.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "^4.16.3",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "postinstall": "react-scripts build"
+  },
+  "engines": {
+    "node": "8.11.1",
+    "npm": "~5.6.0"
+  }
+}
