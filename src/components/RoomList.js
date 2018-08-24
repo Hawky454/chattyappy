@@ -7,7 +7,7 @@ class RoomList extends React.Component {
         return (
             <div className="rooms-list">
               <ul>
-              <h3>Your rooms:</h3> 
+              <h3>Chatty Appy <span>⇅</span></h3> 
                  {orderedRooms.map(rooms => {
                      let active = this.props.roomId === rooms.id ? 'active' : '';
                   return (
