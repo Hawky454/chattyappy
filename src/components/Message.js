@@ -1,13 +1,14 @@
 import React from 'react'
-//this component is being used in the MessageList.js
-function Message(props) {  
-        return (
+
+class Message extends Component {
+
+    render() { 
+        return ( 
             <div className="message">
-              <div className="message-username">{props.username}</div>
-              <div className="message-text">{props.text}</div>
+              <div></div>
             </div>
-        )
+         );
     }
-
-
-export default Message
+}
+ 
+export default Message;

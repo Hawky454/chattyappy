@@ -1,209 +1,51 @@
-:root {
-  --main-color: #6f7e88;
-  --secondary-color: white;
-  --main-text-color: #3e5869;
-  --secondary-text-color: #b0c7d6;
-  --send-message-form: #F5F5F5;
+.send-message-form {
+    display: flex;
+    justify-content: flex-end;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Source Code Pro', monospace;
-  font-weight: bold;
-  color: 	#3e5869; 
+.send-message-input {
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 20px;
+    height: 40px;
+    width: 400px;
+
 }
 
-#root {
-  height: 100%;
+.new-room-input {
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 20px;
+    height: 40px;
+    width: 400px;
 }
 
-.app {
-  display: grid;
-  height: 100%;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 100px;
-  grid-template-areas: 
-      "m m m m m r"
-      "m m m m m r"
-      "m m m m m r"
-      "m m m m m r"
-      "m m m m m r"
-      "s s s s s n";
-}
-
-.new-room-form {
-  grid-area: n;
-}
-
-.rooms-list {
-  grid-area: r;
+button {
+    border: none;
+    font-size: 20px;
+    margin-left: 5px;
 }
 
 .message-list {
-  grid-area: m;
+    width: 100%;
+    height: 800px;
+    border: 1px solid red;
+    text-align: start;
+    padding: 10px;
 }
 
-.send-message-form {
-  grid-area: s;
-}
-
-/* REST OF CSS */
-.rooms-list {
-  box-sizing: border-box;
-  padding: 10px;
-  background-color: var(--main-color);
-  overflow: scroll;
-  height: 100%;
-  font-size: 24px;
-}
-
-.rooms-list > ul {
-  list-style-type: none;    
-  padding: 0;
-  overflow: scoll;
-}
-
-.rooms-list li {
-  margin: 10px 0;
-}
-
-.rooms-list > h3 {
-  margin: 5px 0;
-  color: var(--secondary-color);
-}
-
-.rooms-list .room a {
-  color: var(--secondary-text-color);
-  font-weight: 600;
-  text-decoration: none;
-  
-}
-
-.rooms-list .room.active a {
-  color: var(--secondary-color);
-}
-
-.new-room-form {
-  padding: 0 5px;
-  background: var(--secondary-color);
-  color: var(--main-text-color);
-}
-
-.new-room-form form {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.new-room-form input {
-  width: 135px;
-  background: var(--secondary-color);
-  font-size: 20px; 
-}
-
-.new-room-form button {
-  background: var(--secondary-color);
-  color: var(--main-text-color);
-  border: 0;
-  font-weight: 900;
-  font-size: 24px;
-} 
-
-.new-room-form input::placeholder {
-  color: var(--main-text-color);
-  font-weight: 200;
-}
-
-.new-room-form input:focus {
-  outline-width: 0;
-}
-
-.new-room-form input {
-  border: 0;
-}
-
-.new-room-form button {
-  border: 0;
-}
-
-.message {
-  margin: 15px 0;
-}
-
-.message .message-username {
-  font-size: 16px;
-  color: var(--main-text-color);
-  opacity: 0.9;
-  margin-bottom: 6px;
-}
-.message .message-text {
-  background: var(--main-color);
-  color: var(--secondary-color);
-  display: inline;
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-family: 'Indie Flower', cursive;
-}
-
-.message-list {
-  box-sizing: border-box;
-  padding-left: 6px;
-  /* margin-left: 10px;  */
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-  background: var(--secondary-color);
-  font-size: 30px;
-}
-
-.message-list .join-room {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-size: 34px;
-  font-weight: 300;
-}
-
-.send-message-form {
-  background: var(--send-message-form);
-  display: flex;
-}
-
-.send-message-form input {
-  width: 100%;
-  padding: 15px 10px;
-  margin: 0;
-  font-size: 24px;
-  border-style: none;
-  background: var(--send-message-form);
-  font-weight: 200;
+#sender-id {
+   font-size: 16px;
+   margin: 5px;
+   color: red;
 
 }
 
-.send-message-form input:focus {
-  outline-width: 0;
+#sender-text {
+    border-radius: 5px;
+    width: 400px;
+    color: white;
+    padding: 10px;
+    background-color: #03a9f4;
+    font-size: 30px;
 }
-
-.send-message-form input::placeholder {
-  color: var(--main-text-color);
-}
-
-.help-text {
-  position: absolute;
-  top: 10px;
-  margin: 10px; /*not sure*/
-  font-size: 30px;
-}
-
-/* this is just me fucking around with the TestComponent */
-
-/* button {
-  height: 69px;
-  font-size: 18px;
-  font-weight: bolder;
-  border-radius: 5px;
-} */

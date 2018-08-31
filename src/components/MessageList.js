@@ -1,52 +1,60 @@
 import React from 'react'
-import Message from './Message'
-import TestFun from './TestComponent'
-import ReactDOM from 'react-dom'
+
+const dummyData = [
+    {
+        senderId: 'perborgen',
+        text: 'Hey, how is it going?'
+    },
+    {
+        senderId: 'janedoe',
+        text: 'Great! How about you? You\'re as smooth as Tennessee Whisky'
+    },
+    {
+        senderId: 'perborgen',
+        text: 'Good to hear! I am great as well, although I am having a hard time figureing out how to set up the css for this text part!!!'
+    },
+    {
+        senderId: 'David Miller',
+        text: 'Ya see, this is all just an object and you are now learning how to use Object Oriented Programming.... good job!'
+    },
+    {
+        senderId: 'Davina',
+        text: 'Oh mister, you are so funny!'
+    },
+    {
+        senderId: 'David Miller',
+        text: 'I know, I know'
+    }
+]
 
 
 
 
 class MessageList extends React.Component {
 
-    //!This allows user to read posts higher up in the chatroom without the post shooting back to the bottom whenever a new poster posts...
-    componentWillUpdate() {
-        let node = ReactDOM.findDOMNode(this)
-        this.shouldScrollToBottom = node.scrollTop + node.clientHeight + 100 >= node.scrollHeight
-    }
-
-    //!This will scroll page down to latest post (depending on where the user is)
-    componentDidUpdate() {
-        if (this.shouldScrollToBottom) {
-            let node = ReactDOM.findDOMNode(this)
-            node.scrollTop = node.scrollHeight
-        }
-    }
-    
-    render() {
-        if(!this.props.roomId) {
-            return (
-                <div className="message-list">
-                    <div className="join-room">
-                     Join a room! &rarr;
-                    </div>
-                </div>
-            )
-        }
-        return (
+    render() { 
+        return ( 
             <div className="message-list">
-                {/* we use props here because we added the props to element in App.js while rendering.  this.state was converted to this.props at that point. */}
-                {this.props.messages.map((message, index) => {
-                    return (
-                        <Message 
-                        key={index} //added index for unique key
-                        username={message.senderId} 
-                        text={message.text}/>
-                    )
-
-                })}
+              {dummyData.map((data, index) => {
+                  return (
+                        <section 
+                           className="message"
+                           key={index}>
+                           
+                          <div 
+                             id="sender-id">
+                             {`${data.senderId}`} 
+                          </div>
+                          <div 
+                             id="sender-text">
+                             {`${data.text}`}
+                          </div>
+                        </section>
+              )})}
+              
             </div>
-        );
+         );
     }
 }
-
-export default MessageList
+ 
+export default MessageList;
