@@ -26,5 +26,17 @@
   "engines": {
     "node": "8.11.1",
     "npm": "~5.6.0"
-  }
+  },
+  "description": "",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hawky454/chattyappy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hawky454/chattyappy/issues"
+  },
+  "homepage": "https://github.com/Hawky454/chattyappy#readme"
 }
